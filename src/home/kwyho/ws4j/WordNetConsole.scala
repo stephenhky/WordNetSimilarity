@@ -10,7 +10,10 @@ object WordNetConsole {
     var word1 = readLine("word1 > ")
     var word2 = readLine("word2 > ")
     while ((word1.length()>0) && (word2.length()>0)) {
-      println(word1+" ~ "+word2+" : "+wrapper.similarityBetweenWords(word1, word2, wrapper.similarityCalculators("WuPalmer")))
+      println(word1+" ~ "+word2+" : ")
+      def simCalculator = wrapper.similarityBetweenWords(word1, word2)(_)
+      def printSimilarity(relatednessName: String) : Unit = println("\t"+relatednessName+" = "+simCalculator(wrapper.similarityCalculators(relatednessName)))
+      wrapper.similarityCalculators.keys.foreach(printSimilarity)
 
       word1 = readLine("word1 > ")
       word2 = readLine("word2 > ")

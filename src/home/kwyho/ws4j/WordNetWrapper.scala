@@ -19,10 +19,10 @@ class WordNetWrapper {
     "JiangConrath" -> new JiangConrath(db), "Lin" -> new Lin(db), "Path" -> new Path(db)
   )
 
-  def similarityBetweenWords(word1: String, word2: String, calculator: RelatednessCalculator) : Double =
+  def similarityBetweenWords(word1: String, word2: String)(calculator: RelatednessCalculator) : Double =
     calculator calcRelatednessOfWords(word1, word2)
 
-  def similarityBetweenSynsets(synset1: Concept, synset2: Concept, calculator: RelatednessCalculator) : Relatedness =
+  def similarityBetweenSynsets(synset1: Concept, synset2: Concept)(calculator: RelatednessCalculator) : Relatedness =
     calculator calcRelatednessOfSynset(synset1, synset2)
 
 }
